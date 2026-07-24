@@ -63,7 +63,7 @@ O sistema deve permitir que novos pacientes realizem cadastro através do Google
 
 ## RF-002 - Cadastro de Profissional
 
-O sistema deve permitir que profissionais realizem cadastro contendo:
+O sistema deve permitir que o administrador realizem cadastro de perfis profissioais contendo:
 
 - Nome;
 - E-mail;
@@ -82,7 +82,7 @@ O sistema deve permitir autenticação utilizando:
 - E-mail;
 - Senha.
 
-Ou via Google.
+Ou via Google exceto para os perfis profissionais.
 
 ---
 
@@ -134,36 +134,36 @@ O sistema deverá permitir upload e alteração da foto de perfil.
 
 ## RF-010 - Cadastro de Especialidades
 
-O profissional poderá cadastrar suas especialidades.
+O profissional poderá cadastrar/adicionar suas especialidades.
 
 ---
 
 ## RF-011 - Definição de Valor da Consulta
 
-O profissional poderá informar o valor de suas consultas.
+O profissional poderá informar o valor de suas consultas à serem agendadas pelos pacientes.
 
 ---
 
 ## RF-012 - Configuração da Agenda
 
-O profissional poderá definir:
+O profissional poderá definir através de um calendário:
 
 - Dias disponíveis;
 - Horários disponíveis;
-- Intervalos;
+- Intervalos (entre consultas max 30 min);
 - Duração padrão da consulta.
 
 ---
 
 ## RF-013 - Bloqueio de Datas
 
-O profissional poderá bloquear datas específicas.
+O profissional poderá através do calendário bloquear datas específicas. 
 
 ---
 
 ## RF-014 - Ausência Temporária
 
-O profissional poderá informar períodos de férias ou indisponibilidade.
+O administrador poderá informar períodos de férias ou indisponibilidade de um profissional.
 
 ---
 
@@ -171,7 +171,7 @@ O profissional poderá informar períodos de férias ou indisponibilidade.
 
 ## RF-015 - Listagem de Profissionais
 
-O paciente poderá visualizar todos os profissionais cadastrados.
+O paciente poderá visualizar todos os profissionais cadastrados e suas informações como especialidades.
 
 ---
 
@@ -193,7 +193,7 @@ O sistema deverá apresentar:
 - Biografia;
 - Especialidades;
 - Horários disponíveis;
-- Valor da consulta.
+- Valores das consultas.
 
 ---
 
@@ -201,13 +201,13 @@ O sistema deverá apresentar:
 
 ## RF-018 - Consulta de Disponibilidade
 
-O paciente poderá visualizar horários livres.
+O paciente poderá visualizar horários livres através de um calendário. Ao selecionar um dia específico, o sistema deve verificar se existem profissionais disponíveis naquele dia. 
 
 ---
 
 ## RF-019 - Agendamento
 
-O paciente poderá realizar agendamento selecionando:
+Ao selecionar o dia disponível o paciente poderá visualizar profissionais disponíveis realizar agendamento selecionando:
 
 - Profissional;
 - Data;
@@ -229,7 +229,7 @@ Após concluir o agendamento, o sistema deverá gerar confirmação.
 
 ## RF-022 - Reagendamento
 
-O paciente poderá reagendar consultas futuras.
+O paciente poderá reagendar consultas futuras em horários disponíveis.
 
 ---
 
@@ -269,7 +269,7 @@ A agenda deverá permitir visualização:
 
 ## RF-027 - Consulta dos Agendamentos
 
-O profissional poderá visualizar informações da consulta.
+O profissional poderá visualizar informações da consulta. Verificar informações do paciente como histórico de consultas e seus prontuários.
 
 ---
 
