@@ -1,2 +1,9 @@
 # EmoCare2.0
-EmoCare 2.0 is a comprehensive therapeutic care management platform that connects patients and professionals through smart scheduling, clinical management, and integrated communication, built using modern technologies and a scalable architecture.
+EmoCare 2.0 is a comprehensive platform for managing therapeutic care that connects patients and professionals through smart scheduling, clinical management, and integrated communication, built using modern technologies and a scalable architecture.
+
+It is a modern platform for managing therapeutic care, designed to connect patients and mental health professionals through an intuitive, secure, and efficient experience. The system allows patients to find professionals and schedule sessions, while therapists can manage their calendars, set availability, track patient clinical information, record session notes, and maintain organized communication via notifications and messaging.
+
+The project represents the evolution of the original EmoCare prototype, rebuilt using modern frameworks, a scalable architecture, and software engineering best practices. Its goal is to provide a robust, growth-ready application that prioritizes security, maintainability, and an excellent experience for all users.
+
+## Technical Description
+EmoCare 2.0 is a full-stack application for managing therapeutic sessions, developed using modern architecture and software engineering best practices. The platform provides a comprehensive environment for both patients and professionals, featuring authentication, appointment scheduling, availability management, medical records and notes, a notification system, and therapist-patient communication. The project was designed to demonstrate concepts such as clean architecture, modularization, secure authentication, scalability, and integration between the frontend, backend, and third-party services.
