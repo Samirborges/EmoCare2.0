@@ -2,7 +2,7 @@
 # EmoCare 2.0
 
 **Versão:** 1.0  
-**Status:** Em Revisão  
+**Status:** Aprovado  
 **Autor:** Samir Borges  
 **Data:** 24/07/2026
 
@@ -115,7 +115,7 @@ O sistema deve permitir atualização dos dados cadastrais.
 
 ## RF-008 - Alteração de Senha
 
-O usuário poderá alterar sua senha após informar a senha atual.
+O usuário poderá alterar sua senha após informar a senha atual. Exceto se o usuário estiver autenticado via provedor externo, nesse caso a alteração de senha deverá ser feita diretamente junto ao provedor.
 
 ---
 
@@ -253,12 +253,12 @@ O profissional poderá visualizar sua agenda.
 
 O sistema deverá controlar automaticamente o ciclo de vida de cada consulta, utilizando os seguintes estados:
 
-• Agendada
-• Confirmada
-• Em andamento
-• Finalizada
-• Cancelada
-• Não Compareceu
+- Agendada
+- Confirmada
+- Em andamento
+- Finalizada
+- Cancelada
+- Não Compareceu
 
 O estado "Não Compareceu" deverá registrar qual das partes esteve ausente (paciente ou profissional).
 
@@ -468,6 +468,7 @@ Para Profissionais
 - Cancelar consulta
 - Reagendar consulta
 - Confirmação de presença
+- Requisição de férias ou ausência temporária
 
 ---
 
