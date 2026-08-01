@@ -30,7 +30,7 @@ public class AuthController {
 
     }
 
-    // AuthController.java — endpoint novo
+
     @GetMapping("/me")
     public ResponseEntity<UserResponseDTO> me(@AuthenticationPrincipal Jwt jwt) {
         User user = authService.getAuthenticatedUser(jwt.getSubject());

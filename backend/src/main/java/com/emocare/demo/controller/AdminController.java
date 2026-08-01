@@ -1,13 +1,14 @@
 package com.emocare.demo.controller;
 
+import com.emocare.demo.DTO.AdminCreateUserDTO;
 import com.emocare.demo.DTO.UserResponseDTO;
 import com.emocare.demo.service.AdminService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,5 +24,14 @@ public class AdminController {
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<List<UserResponseDTO>> getUsers(){
         return ResponseEntity.ok(service.bringUsers());
+    }
+
+    @PostMapping("/create-user")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<Void> createUser(@Valid @RequestBody AdminCreateUserDTO userDTO) {
+
+        service.createUser(userDTO);
+
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 }

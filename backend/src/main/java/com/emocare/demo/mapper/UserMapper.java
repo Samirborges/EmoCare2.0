@@ -1,5 +1,6 @@
 package com.emocare.demo.mapper;
 
+import com.emocare.demo.DTO.AdminCreateUserDTO;
 import com.emocare.demo.DTO.CreateUserDTO;
 import com.emocare.demo.entity.User;
 import org.springframework.stereotype.Component;
@@ -12,6 +13,19 @@ public class UserMapper {
 
         user.setFullName(request.fullName());
         user.setEmail(request.email());
+        user.setPhone(request.phoneNumber());
+        user.setBirthDate(request.birthDate());
+
+        return user;
+
+    }
+
+    public User toEntity(AdminCreateUserDTO request) {
+        User user = new User();
+
+        user.setFullName(request.fullName());
+        user.setEmail(request.email());
+        user.setRole(request.role());
         user.setPhone(request.phoneNumber());
         user.setBirthDate(request.birthDate());
 
