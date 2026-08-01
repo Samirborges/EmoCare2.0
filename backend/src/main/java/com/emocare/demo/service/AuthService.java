@@ -10,6 +10,8 @@ import com.emocare.demo.mapper.UserMapper;
 import com.emocare.demo.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 public class AuthService {
 
@@ -43,5 +45,11 @@ public class AuthService {
             throw new AuthException("Erro ao criar o perfil do usuário", e);
         }
 
+    }
+
+    public User getAuthenticatedUser(String subject) {
+        UUID userId = UUID.fromString(subject);
+        return repository.findById(userId)
+                .orElseThrow(() -> new AuthException("Usuário não encontrado"));
     }
 }
