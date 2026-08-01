@@ -5,7 +5,7 @@ import com.emocare.demo.entity.enums.UserRole;
 
 import java.util.UUID;
 
-public record UserResponseDTO(UUID id, String fullName, String name, UserRole role) {
+public record UserResponseDTO(UUID id, String fullName, String email, UserRole role) {
 
     public static UserResponseDTO from(User user) {
         return new UserResponseDTO(user.getId(), user.getFullName(), user.getEmail(), user.getRole());
