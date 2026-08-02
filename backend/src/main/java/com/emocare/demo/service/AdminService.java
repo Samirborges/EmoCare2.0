@@ -1,6 +1,7 @@
 package com.emocare.demo.service;
 
-import com.emocare.demo.DTO.AdminCreateUserDTO;
+import com.emocare.demo.DTO.AdminCreateUserAdminRequestDTO;
+import com.emocare.demo.DTO.AdminCreateUserProfessionalRequestDTO;
 import com.emocare.demo.DTO.UserResponseDTO;
 import com.emocare.demo.entity.Professional;
 import com.emocare.demo.entity.User;
@@ -40,7 +41,7 @@ public class AdminService {
     }
 
     @Transactional
-    public User createUser(AdminCreateUserDTO userDTO) {
+    public User createUser(AdminCreateUserProfessionalRequestDTO userDTO) {
         if (userRepository.existsByEmail(userDTO.email())) {
             throw new AuthException("E-mail já existe");
         }
@@ -75,6 +76,25 @@ public class AdminService {
         }
 
 
+    }
+
+    @Transactional
+    public User createUser(AdminCreateUserAdminRequestDTO userAdminRequestDTO) {
+        if (userRepository.existsByEmail(userAdminRequestDTO.email())) {
+            throw new AuthException("E-mail já existe");
+        }
+
+        SupabaseUserResponse supabaseUser =
+                supabaseAuthClient.createUser(userAdminRequestDTO.email(), userAdminRequestDTO.password());
+
+        try {
+            User user = mapper.toEntity(userAdminRequestDTO);
+            user.setId(supabaseUser.id());
+            return userRepository.save(user);
+        } catch (Exception e) {
+            supabaseAuthClient.deleteUser(supabaseUser.id());
+            throw new AuthException("Erro ao criar o perfil do usuário", e);
+        }
     }
 
 }

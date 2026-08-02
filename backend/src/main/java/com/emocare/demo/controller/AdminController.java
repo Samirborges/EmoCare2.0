@@ -1,6 +1,7 @@
 package com.emocare.demo.controller;
 
-import com.emocare.demo.DTO.AdminCreateUserDTO;
+import com.emocare.demo.DTO.AdminCreateUserAdminRequestDTO;
+import com.emocare.demo.DTO.AdminCreateUserProfessionalRequestDTO;
 import com.emocare.demo.DTO.UserResponseDTO;
 import com.emocare.demo.service.AdminService;
 import jakarta.validation.Valid;
@@ -26,12 +27,19 @@ public class AdminController {
         return ResponseEntity.ok(service.bringUsers());
     }
 
-    @PostMapping("/create-user")
+    @PostMapping("/create-user-professional")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<Void> createUser(@Valid @RequestBody AdminCreateUserDTO userDTO) {
+    public ResponseEntity<Void> createUser(@Valid @RequestBody AdminCreateUserProfessionalRequestDTO userDTO) {
 
         service.createUser(userDTO);
 
+        return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
+
+    @PostMapping("/create-user-admin")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<Void> createUser(@Valid @RequestBody AdminCreateUserAdminRequestDTO userDTO) {
+        service.createUser(userDTO);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 }
