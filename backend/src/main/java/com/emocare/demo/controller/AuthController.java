@@ -1,6 +1,8 @@
 package com.emocare.demo.controller;
 
 import com.emocare.demo.DTO.CreateUserDTO;
+import com.emocare.demo.DTO.ForgotPasswordRequestDTO;
+import com.emocare.demo.DTO.ForgotPasswordResponseDTO;
 import com.emocare.demo.DTO.UserResponseDTO;
 import com.emocare.demo.entity.User;
 import com.emocare.demo.service.AuthService;
@@ -35,6 +37,12 @@ public class AuthController {
     public ResponseEntity<UserResponseDTO> me(@AuthenticationPrincipal Jwt jwt) {
         User user = authService.getAuthenticatedUser(jwt.getSubject());
         return ResponseEntity.ok(UserResponseDTO.from(user));
+    }
+
+
+    @PostMapping("/forgot-password")
+    public ResponseEntity<ForgotPasswordResponseDTO> forgotPassword(@Valid @RequestBody ForgotPasswordRequestDTO dto) {
+        return ResponseEntity.ok(authService.checkPasswordRecoveryEligibility(dto.email()));
     }
 
 }

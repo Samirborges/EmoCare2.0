@@ -1,7 +1,9 @@
 package com.emocare.demo.service;
 
 import com.emocare.demo.DTO.CreateUserDTO;
+import com.emocare.demo.DTO.ForgotPasswordResponseDTO;
 import com.emocare.demo.entity.User;
+import com.emocare.demo.entity.enums.AuthProvider;
 import com.emocare.demo.entity.enums.UserRole;
 import com.emocare.demo.exception.AuthException;
 import com.emocare.demo.integration.supabase.SupabaseAuthClient;
@@ -10,6 +12,7 @@ import com.emocare.demo.mapper.UserMapper;
 import com.emocare.demo.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -51,5 +54,20 @@ public class AuthService {
         UUID userId = UUID.fromString(subject);
         return repository.findById(userId)
                 .orElseThrow(() -> new AuthException("Usuário não encontrado"));
+    }
+
+    public ForgotPasswordResponseDTO checkPasswordRecoveryEligibility(String email) {
+        Optional<User> userOpt = repository.findByEmail(email);
+
+        if(userOpt.isEmpty()) {
+            return new ForgotPasswordResponseDTO(true, "Se este e-mail estiver cadastrado, você receberá um link de recuperação.");
+        }
+
+        User user = userOpt.get();
+        if (user.getProvider() == AuthProvider.GOOGLE) {
+            return new ForgotPasswordResponseDTO(false, "Esta conta usa login via Google. Recupere sua senha diretamente com o Google.");
+        }
+
+        return new ForgotPasswordResponseDTO(true, "Se ese e-mail estiver cadastrado, você receberá um link de recuperação.");
     }
 }
