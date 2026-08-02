@@ -10,7 +10,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 
-public record AdminCreateUserDTO(
+public record AdminCreateUserProfessionalRequestDTO(
         @NotBlank
         String fullName,
 
