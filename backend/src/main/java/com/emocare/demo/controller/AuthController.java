@@ -1,9 +1,6 @@
 package com.emocare.demo.controller;
 
-import com.emocare.demo.DTO.CreateUserDTO;
-import com.emocare.demo.DTO.ForgotPasswordRequestDTO;
-import com.emocare.demo.DTO.ForgotPasswordResponseDTO;
-import com.emocare.demo.DTO.UserResponseDTO;
+import com.emocare.demo.DTO.*;
 import com.emocare.demo.entity.User;
 import com.emocare.demo.service.AuthService;
 import jakarta.validation.Valid;
@@ -37,6 +34,12 @@ public class AuthController {
     public ResponseEntity<UserResponseDTO> me(@AuthenticationPrincipal Jwt jwt) {
         User user = authService.getAuthenticatedUser(jwt.getSubject());
         return ResponseEntity.ok(UserResponseDTO.from(user));
+    }
+
+    @PatchMapping("/me")
+    public ResponseEntity<UserResponseDTO> updateMe(@AuthenticationPrincipal Jwt jwt, @RequestBody UpdateUserDTO dto) {
+        User updated = authService.updateUser(jwt.getSubject(), dto);
+        return ResponseEntity.ok(UserResponseDTO.from(updated));
     }
 
 

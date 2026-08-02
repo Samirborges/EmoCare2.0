@@ -4,7 +4,6 @@ import com.emocare.demo.DTO.AdminCreateUserDTO;
 import com.emocare.demo.DTO.UserResponseDTO;
 import com.emocare.demo.entity.Professional;
 import com.emocare.demo.entity.User;
-import com.emocare.demo.entity.enums.ProfessionalStatus;
 import com.emocare.demo.entity.enums.UserRole;
 import com.emocare.demo.exception.AuthException;
 import com.emocare.demo.integration.supabase.SupabaseAuthClient;
@@ -16,7 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
