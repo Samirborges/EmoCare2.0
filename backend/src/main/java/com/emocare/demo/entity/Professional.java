@@ -10,6 +10,8 @@ import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 
 import java.time.OffsetDateTime;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -51,6 +53,14 @@ public class Professional {
 
     @Column(name = "updated_at", nullable = false)
     private OffsetDateTime updatedAt; // Mapeia o TIMESTAMPTZ do Postgres
+
+    @ManyToMany
+    @JoinTable(
+            name = "professional_specialties",
+            joinColumns = @JoinColumn(name = "professional_id"),
+            inverseJoinColumns = @JoinColumn(name = "specialty_id")
+    )
+    private Set<Specialty> specialties = new HashSet<>();
 
     @PrePersist
     public void onCreate() {
