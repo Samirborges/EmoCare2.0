@@ -6,7 +6,6 @@ import com.emocare.demo.entity.Specialty;
 import com.emocare.demo.exception.ResourceNotFoundException;
 import com.emocare.demo.repository.ProfessionalRepository;
 import com.emocare.demo.repository.SpecialtyRepository;
-import org.springframework.boot.context.config.ConfigDataResourceNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
