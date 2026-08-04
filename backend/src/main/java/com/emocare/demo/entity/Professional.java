@@ -62,6 +62,9 @@ public class Professional {
     )
     private Set<Specialty> specialties = new HashSet<>();
 
+    @Column(name = "buffer_minutes", nullable = false, columnDefinition = "smallint default 0")
+    private Short bufferMinutes = 10;
+
     @PrePersist
     public void onCreate() {
         createdAt = OffsetDateTime.now();
